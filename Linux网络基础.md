@@ -168,7 +168,7 @@ route程序对内核的IP选路表进行操作。它主要用于通过已用ifco
 计算机之间的数据传输必须经过网络，网络可以直接连接两台计算机，或者通过一个一个的节点构成。
 路由器理解为互联网的中转站，网络中的数据包就是通过一个一个路由器转发到达目的地。
 
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610857066266-ae4b2ec7-dd1b-4051-9f4b-b0ba657eb0a2.png)
+![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610857066266-ae4b2ec7-dd1b-4051-9f4b-b0ba657eb0a2.png#align=left&display=inline&height=554&margin=%5Bobject%20Object%5D&originHeight=554&originWidth=1180&size=0&status=done&style=none&width=1180)
 
 ### 路由的分类
 路由分为静态路由和动态路由。
