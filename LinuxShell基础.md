@@ -102,6 +102,9 @@ echo "哥哥强呀，奥力给"
 - 使用`绝对/相对`路径执行脚本，需要文件含有x权限
 - `source script.sh`或者`. script.sh`，代表`执行的含义，source等于点.`
 - 少见的用法，`sh < script.sh`
+
+
+
 ```
 [root@chaogelinux data]# cat test.sh
 #!/bin/bash
