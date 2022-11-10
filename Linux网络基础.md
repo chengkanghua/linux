@@ -167,7 +167,7 @@ route程序对内核的IP选路表进行操作。它主要用于通过已用ifco
 路由概念：
 计算机之间的数据传输必须经过网络，网络可以直接连接两台计算机，或者通过一个一个的节点构成。
 路由器理解为互联网的中转站，网络中的数据包就是通过一个一个路由器转发到达目的地。
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610857066266-ae4b2ec7-dd1b-4051-9f4b-b0ba657eb0a2.png#align=left&display=inline&height=554&margin=%5Bobject%20Object%5D&originHeight=554&originWidth=1180&size=0&status=done&style=none&width=1180)
+![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610857066266-ae4b2ec7-dd1b-4051-9f4b-b0ba657eb0a2.png)
 ### 路由的分类
 路由分为静态路由和动态路由。
 Linux上配置的都是静态路由，是系统管理员使用route命令假如，也就是通过手动输入的方式添加路由规则。
@@ -978,6 +978,7 @@ FTP 选项：
   -np, --no-parent                 不追溯至父目录。
 ```
 _下载单个的文件_
+
 ```
 [root@local-gege ~]# wget http://chengkanghua.top/
 --2019-12-10 14:50:27--  http://chengkanghua.top/
@@ -993,6 +994,7 @@ _下载单个的文件_
 <h1> 各位小伙伴，看懂了源代码编译安装了吗？我们再来一个骇客帝国编译安装，如何?</h1>
 ```
 _下载文件，指定文件名保存到本地_
+
 ```
 [root@local-gege ~]# wget -O /tmp/test.html www.chengkanghua.top
 --2019-12-10 14:55:08--  http://www.chengkanghua.top/
@@ -1005,6 +1007,7 @@ _下载文件，指定文件名保存到本地_
 2019-12-10 14:55:08 (14.1 MB/s) - 已保存 “/tmp/test.html” [141/141])
 ```
 _限速下载，限制每秒1k_
+
 ```
 [root@local-gege ~]# wget --limit-rate=1k https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/lrzsz-0.12.20-36.el7.x86_64.rpm
 ```
@@ -1024,6 +1027,7 @@ wget -c  --limit-rate=1k https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/
 3.看到HTTP状态码 206 partial content 代表客户端请求一个未完成的资源，继续下载
 ```
 _后台下载_
+
 ```
 [root@local-gege tmp]# wget -b  --limit-rate=1k https://mirrors.aliyun.com/centos/7/os/x86_64/Packages/lrzsz-0.12.20-36.el7.x86_64.rpm
 继续在后台运行，pid 为 6475。
