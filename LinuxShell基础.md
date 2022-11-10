@@ -648,12 +648,14 @@ Linux在bash会话启动时就设定里全局环境变量：
 
 - 系统环境变量，区别在于纯大写字母
 - 用户配置的环境变量
+
 ```
 1.查看全局环境变量
 env
 printenv
 ```
 要想显示某个环境变量的值
+
 ```
 [root@web01 ~ 12:02:44]$printenv HOME
 /root
@@ -676,6 +678,7 @@ printenv
 ### 局部用户定义变量
 注意，加上引号
 自定义的变量，尽量用小写字母，进行和系统变量区分开，防止修改系统变量导致灾难。
+
 ```
 [root@web01 ~]# echo $my_name
 [root@web01 ~]# my_name="妹妹"
@@ -686,6 +689,7 @@ printenv
 my_name=妹妹
 ```
 局部变量，在父子shell是不可见的
+
 ```
 [root@web01 ~]# echo $my_name
 妹妹
@@ -702,6 +706,7 @@ exit
 ```
 想要解决这个问题，就可以设置全局变量来改变这个情况。
 ## 设置全局变量
+
 ```
 [root@web01 ~]# export name='哥哥带你学shell'
 [root@web01 ~]#
@@ -720,6 +725,7 @@ exit
 - 子shell里修改了全局变量，也不回影响到父shell
 
 通过如下过程，**看出子shell不会影响到父shell的变量**
+
 ```
 1.当前的父shell
 [root@web01 ~]# name='我是哥哥，这里是全局变量'
@@ -743,6 +749,7 @@ exit
 2.子shell即使用export也无法修改父shell的变量值
 ```
 ## 删除变量
+
 ```
 [root@web01 ~]# unset name
 [root@web01 ~]# echo $name
@@ -750,10 +757,12 @@ exit
 要注意的还是，在子shell里删除变量，也不会影响父shell
 ## 查找变量
 小技巧，过滤出部分系统的环境变量
+
 ```
 [root@web01 ~]# set |grep  '^[A-Z]' |wc -l
 ```
 查找出部分自定义变量
+
 ```
 [root@web01 ~]# set |grep  '^[a-z]'
 colors=/root/.dircolors
@@ -762,6 +771,7 @@ dequote ()
 quote ()
 quote_readline ()
 ```
+
 ## PATH变量
 PATH变量的作用，哥哥已经在其他章节给大家讲解过了。
 ## 登录Shell
@@ -791,6 +801,7 @@ PATH变量的作用，哥哥已经在其他章节给大家讲解过了。
 ## 非交互式shell
 说了上面的两种shell，就是因为还存在非交互式shell。
 这种形式是用来执行shell脚本，它没有命令行提示符。
+
 ```
 [root@web01 ~]# cat hello.sh
 #!/bin/bash
