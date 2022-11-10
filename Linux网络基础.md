@@ -246,7 +246,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 - Metric：需要经过几个网络节点才能到达路由的目标地址
 - Ref：参考到此路由规则的数目
 - Iface：路由对应的网络设备接口
-```
+```bash
 192.168.178.0   0.0.0.0         255.255.255.0   U     102    0        0 ens33
 表示主机所在网段是192.168.178.0
 若数据传送目标在同一网段，可以直接通过ens33转发数据包
@@ -265,6 +265,7 @@ default         bogon           0.0.0.0         UG    102    0        0 ens33
 192.168.178.0   0.0.0.0         255.255.255.0   U     102    0        0 ens33
 ```
 ### 删除网关
+
 ```
 [root@local-gege network-scripts]# route del default
 [root@local-gege ~]# route
