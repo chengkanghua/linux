@@ -1,12 +1,21 @@
 ## 计算机硬件与存储
 
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032235-96d1f8d0-5a54-402b-8222-82e2b276f6de.png#align=left&display=inline&height=864&margin=%5Bobject%20Object%5D&originHeight=864&originWidth=1236&size=0&status=done&style=none&width=1236)
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032277-e0fa8f2d-936e-4dc5-8564-e7308cc5e5ec.png#align=left&display=inline&height=852&margin=%5Bobject%20Object%5D&originHeight=852&originWidth=1268&size=0&status=done&style=none&width=1268)
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032242-8e820479-2f69-41c3-a5c3-888fe35fdd64.png#align=left&display=inline&height=1776&margin=%5Bobject%20Object%5D&originHeight=1776&originWidth=1596&size=0&status=done&style=none&width=1596)
+![image-20221110132453468](Linux%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F.assets/image-20221110132453468.png)
+![image-20221110132612846](Linux磁盘管理与文件系统.assets/image-20221110132612846.png)
+
+![image-20221110132728860](Linux磁盘管理与文件系统.assets/image-20221110132728860.png)
+
+![image-20221110132812238](Linux磁盘管理与文件系统.assets/image-20221110132812238.png)
+
+
 
 ### 磁盘知识体系
-![](https://cdn.nlark.com/yuque/0/2021/jpeg/194754/1610808032247-e46982f5-76bc-4a58-88a3-e124faee5bb7.jpeg#align=left&display=inline&height=1018&margin=%5Bobject%20Object%5D&originHeight=1018&originWidth=1980&size=0&status=done&style=none&width=1980)
+
+![image-20221110132827352](Linux磁盘管理与文件系统.assets/image-20221110132827352.png)
+
+
 ### Linux磁盘存储的经典描述
+
 ```
 磁盘要放入计算机且被Linux系统识别，到可以使用磁盘存储数据，过程如下：
 1.磁盘要存数据，相当于人盖房子
@@ -14,16 +23,16 @@
 3.磁盘分区完成后，还得格式化后才能使用，且创建文件系统后才可以存储数据，相当于家里得装修后才能开始住人，不同的文件系统相当于不同的装修风格
 4.磁盘分区，格式化，创建文件系统后，还得进行挂载到不同的文件夹，才能存放数据，相当于房子还得安装门、窗，才能和外界通信，进出
 ```
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032258-d6fa07ae-1aa7-4845-acb5-6bec93aaca2b.png#align=left&display=inline&height=1492&margin=%5Bobject%20Object%5D&originHeight=1492&originWidth=2118&size=0&status=done&style=none&width=2118)
+![image-20221110132847790](Linux磁盘管理与文件系统.assets/image-20221110132847790.png)
 ## 机械硬盘原理
 机械硬盘由坚硬金属材料制成的涂以磁性介质的盘片，盘片两面称为盘面或扇面，都可以记录信息，由磁头对盘面进行操作，一般用磁头号区分。
 结构特性决定了机械硬盘如果受到剧烈冲击，磁头与盘面可能产生的哪怕是轻微撞击都有可能报废。
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032247-3ebf78ea-e1cd-4280-8525-251e8554cf8f.png#align=left&display=inline&height=510&margin=%5Bobject%20Object%5D&originHeight=510&originWidth=1268&size=0&status=done&style=none&width=1268)
+![image-20221110132905791](Linux磁盘管理与文件系统.assets/image-20221110132905791.png)
 磁头不动，硬盘旋转，磁头就会在磁盘表面画出一个圆形轨迹且磁化，数据就保存在磁化区域中，称之为磁道。
 每个磁道分段，一个弧就是一个扇区。
 一个硬盘表面可以有多个扇面，每个扇面磁道数相同，具有相同周长的磁道形成的圆柱称之为柱面，柱面数与磁道数相等。
-![](https://cdn.nlark.com/yuque/0/2021/gif/194754/1610808032262-7541c2f1-326c-485e-b20c-0bf79a57894f.gif#align=left&display=inline&height=218&margin=%5Bobject%20Object%5D&originHeight=218&originWidth=400&size=0&status=done&style=none&width=400)
-![](https://cdn.nlark.com/yuque/0/2021/jpeg/194754/1610808032252-340dbdba-ab47-4d49-b42d-603471db036b.jpeg#align=left&display=inline&height=1398&margin=%5Bobject%20Object%5D&originHeight=1398&originWidth=1694&size=0&status=done&style=none&width=1694)
+![](Linux磁盘管理与文件系统.assets/1610808032262-7541c2f1-326c-485e-b20c-0bf79a57894f.gif)
+![image-20221110132929409](Linux磁盘管理与文件系统.assets/image-20221110132929409.png)
 磁盘的每一面被分为很多条磁道，即表面上的一些同心圆，越接近中心，圆就越小。
 而每一个磁道又按512个字节（0.5 KB）为单位划分为等分，叫做扇区。
 文件数据存储在硬盘上，**硬盘中最小的存储单位是扇区（sector)**
@@ -34,8 +43,29 @@
 
 ---
 
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032256-ea6c8087-a555-4dd5-a521-3753a9f03f93.png#align=left&display=inline&height=1208&margin=%5Bobject%20Object%5D&originHeight=1208&originWidth=1594&size=0&status=done&style=none&width=1594)
+
+```
+计算容量单位
+对于计算机而言，只认识一个叫做二进制 的容量单位，我们称之为 bit ， 但是由于bit 单位太小，计算机又用Byte 单位来统计
+
+1 Byte = 8 bit
+
+同样的，由于计算机存储越来越大，Byte 也太小了，计算又出现简化的单位 KB MB GB TB
+
+常见的单位换算关系
+
+* bit -- 位
+* Byte --字节。 1Byte = 8 Bits
+* Kilobyte （KB） -- 千字节      1kb= 1024 = 2的10次方 bytes
+* Megabyte （MB）  --- 兆字节 1MB =1024KB
+* Gigabyte （GB）。千兆字节。 1GB = 1024MB
+
+```
+
+
+
 ### 磁盘管理的名词解释
+
 ```
 扇区(sector)是磁盘最小的物理存储单元，单位是512字节
 操作系统无法对数目众多的扇区进行寻址，因此操作系统将相邻的扇区组合在一起，形成了块（8个扇区，4k大小）
@@ -44,11 +74,11 @@
 操作系统规定，一个block只能存放一个文件的内容，因此文件占用空间，只能是block的整数倍 du -h /etc/*
 即使文件大小，小于一个block，也就是小于4k，同样占用一个block的大小
 ```
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032259-e8c2d4ef-f46e-486d-a936-22968343b91a.png#align=left&display=inline&height=374&margin=%5Bobject%20Object%5D&originHeight=374&originWidth=880&size=0&status=done&style=none&width=880)
+
 硬盘中最小的存储单位是扇区（sector），扇区大小是512B，而硬盘在文件读写操作的时候并非以扇区为单位，是以`簇`为单位，一个`簇`包含了多个扇区。
 在Windows下如NTFS等文件系统中叫做簇；
 在Linux下如Ext4等文件系统中叫做块（block）
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032274-6eb68a75-5c23-41c9-ade1-e808651a9706.png#align=left&display=inline&height=1154&margin=%5Bobject%20Object%5D&originHeight=1154&originWidth=1744&size=0&status=done&style=none&width=1744)
+![image-20221110133912113](Linux磁盘管理与文件系统.assets/image-20221110133912113.png)
 
 ---
 
@@ -57,7 +87,7 @@
 越多分区，也就有更多不同的地方，可以将文件的性质区分得更细，按照更为细分的性质，存储在不同的地方以管理文件；但太多分区就成了麻烦。
 硬盘分区就像给一间空荡的房子划分出卧室，厨房，客厅等相互隔离的空间一样。主要是为了方面用户的使用。
 另一方面，通过合理的硬盘分区，有效保护系统盘空间，确实能够提高系统运行速度，再者，硬盘分区也可以有效地对数据进行保护。
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032275-559d04ba-d0da-4009-bf5a-b18c0a4832d1.png#align=left&display=inline&height=796&margin=%5Bobject%20Object%5D&originHeight=796&originWidth=1516&size=0&status=done&style=none&width=1516)
+
 你当然可以不分区，只不过，当你面对越来越多的子目录，或者是越来越慢的Windows，不得不费功夫去管理你的文件，或者重装Windows的时候，恐怕会悔不当初。
 
 _mbr原理_
@@ -65,7 +95,8 @@ MBR：Master Boot Record，主分区引导记录。
 磁盘的每块扇区都被分配了一个逻辑块地址，`引导扇区`是每个分区的第一扇区，`主引导扇区`是整个硬盘的第一扇区。
 MBR就保存在主引导扇区中，且扇区还保存了硬盘分区表DPT（Disk Partition Table），和结束标志字（Magic number）。扇区总计512字节，MBR占446字节（0000H - 01BDH），DPT占据64个字节（01BEH - 01FDH），最后的magic number占2字节（01FEH – 01FFH）。
 MBR分区缺点是，硬盘容量最大2T
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032282-094e1e17-41b5-4da3-b43c-7cbd8412dad4.png#align=left&display=inline&height=474&margin=%5Bobject%20Object%5D&originHeight=474&originWidth=1348&size=0&status=done&style=none&width=1348)
+
+![](Linux磁盘管理与文件系统.assets/image-20221110133939193.png)
 _GPT原理_
 GPT分区：全称为Globally Unique Identifier Partition Table，也叫做GUID分区表，由于MBR限制在2TB容量，GPT诞生了，优点如下
 
@@ -74,21 +105,23 @@ GPT分区：全称为Globally Unique Identifier Partition Table，也叫做GUID�
 - 自带磁盘数据保险机制
 ## 文件系统
 ### 格式化文件系统
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032283-b5b7b182-bded-4874-ac6a-bee8702f7ed1.png#align=left&display=inline&height=842&margin=%5Bobject%20Object%5D&originHeight=842&originWidth=544&size=0&status=done&style=none&width=544)
+
 
 - FAT16/FAT32，最早期的windows文件系统，缺点单个文件不能超过2G/4G大小，现在一部蓝光电影十几G肯定不行
 - NTFS，支持文件加密，采用日志式文件系统，详细记录磁盘读写操作，提高数据和系统安全性，突破了4GB单个文件大小，对于flash闪存设备，过多读写造成磁盘寿命较短
 - exFAT，单个文件支持16GB，适合于flash闪存设备使用（ssd，u盘）
 ### 平均寻道时间
 平均寻道时间，它是了解硬盘性能至关重要的参数之一。它是指硬盘在接收到系统指令后，磁头从开始移动到数据所在的磁道所花费时间的平均值，它在一定程度上体现了硬盘读取数据的能力，是影响硬盘内部数据传输率的重要参数。
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032280-ad2779e0-f231-42c9-ad29-dc2892dbd6fb.png#align=left&display=inline&height=552&margin=%5Bobject%20Object%5D&originHeight=552&originWidth=664&size=0&status=done&style=none&width=664)
+![image-20221110134003005](Linux磁盘管理与文件系统.assets/image-20221110134003005.png)
 读写头沿径向移动，移到要读取的扇区所在磁道的上方，这段时间称为寻道时间（seek time）。
-通过盘片的旋转，使得要读取的扇区转到读写头的下方，这段时间称为旋转延迟时间（rotational latency time）
+通过盘片的旋转，使得要读取的扇区转到读写头的下方，这段时间称为旋转延迟时间（rotational latency time)
+
 ### 磁盘转速
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032277-23647ded-e0b0-4a6a-bea2-a8f546d0619d.png#align=left&display=inline&height=604&margin=%5Bobject%20Object%5D&originHeight=604&originWidth=1408&size=0&status=done&style=none&width=1408)
+
 **RPM（revolutions per minute）它是指硬盘内电机主轴的旋转速度，也就是硬盘盘片在一分钟内所能完成的最大转数。**
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032291-90abe448-8487-4dcf-abf6-bf778b6a8fc7.png#align=left&display=inline&height=1838&margin=%5Bobject%20Object%5D&originHeight=1838&originWidth=2944&size=0&status=done&style=none&width=2944)
+
 电脑刚诞生初期，几乎所有硬盘都是3600RPM，这是由于美国的交流电是60Hz
+
 ```
 1分=60s
 60Hz * 1转/Hz * 60s/分钟 = 3600转/分钟
@@ -100,21 +133,22 @@ GPT分区：全称为Globally Unique Identifier Partition Table，也叫做GUID�
 ```
 **5400和7200转速比较**
 _情况一_
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032300-555ad28c-e46b-4bbc-9725-264f5739eb69.png#align=left&display=inline&height=826&margin=%5Bobject%20Object%5D&originHeight=826&originWidth=1820&size=0&status=done&style=none&width=1820)
+![image-20221110134116187](Linux磁盘管理与文件系统.assets/image-20221110134116187.png)
 _情况二_
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032303-c0751cc1-5997-485f-9250-b5fce778593c.png#align=left&display=inline&height=910&margin=%5Bobject%20Object%5D&originHeight=910&originWidth=2122&size=0&status=done&style=none&width=2122)
+![image-20221110134125796](Linux磁盘管理与文件系统.assets/image-20221110134125796.png)
 _总结_
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032307-75b647e0-ae3a-428f-a14c-0bf31c06dcd0.png#align=left&display=inline&height=768&margin=%5Bobject%20Object%5D&originHeight=768&originWidth=3016&size=0&status=done&style=none&width=3016)
+![image-20221110134136244](Linux磁盘管理与文件系统.assets/image-20221110134136244.png)
+
 ## Linux磁盘分区
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808707266-a63646da-79ee-463b-821d-1c0ac62b0309.png)
+![image-20221110134201530](Linux磁盘管理与文件系统.assets/image-20221110134201530.png)
 
 - 主分区，primary partition
 - 扩展分区，extended
    - 逻辑分区
 
 **linux一切接文件，磁盘设备在系统中也以文件形式展示**
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032432-e3c624e3-5efa-495a-9c39-30bb79f1b239.png#align=left&display=inline&height=737&margin=%5Bobject%20Object%5D&originHeight=860&originWidth=1456&size=0&status=done&style=none&width=1248)
+![image-20221110134220495](Linux磁盘管理与文件系统.assets/image-20221110134220495.png)
 
 - `/dev/vd[a-d][1-128]`：为虚拟磁盘的磁盘文件名
 ```
@@ -149,7 +183,7 @@ fdisk - manipulate disk partition table 用来管理磁盘分区表，修改、�
 fdisk -l [-u] [device...]
 fdisk -l /dev/sda
 ```
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032403-8580d386-61fb-4d26-b9e0-64e22c4be677.png#align=left&display=inline&height=520&margin=%5Bobject%20Object%5D&originHeight=520&originWidth=1574&size=0&status=done&style=none&width=1574)
+![image-20221110134236745](Linux磁盘管理与文件系统.assets/image-20221110134236745.png)
 ```
 [root@luffycity ~]# fdisk /dev/sda
 欢迎使用 fdisk (util-linux 2.23.2)。
@@ -200,7 +234,7 @@ fdisk磁盘分区命令
 -s 分区 将分区的 大小 （单位为块）信息输出到标准输出
 ```
 ## 分区命令步骤图解
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032630-57452059-c3c1-46af-8783-95427bdb76ac.png#align=left&display=inline&height=3008&margin=%5Bobject%20Object%5D&originHeight=3008&originWidth=1094&size=0&status=done&style=none&width=1094)
+![img](Linux磁盘管理与文件系统.assets/1610808032630-57452059-c3c1-46af-8783-95427bdb76ac.png)
 
 ---
 
@@ -287,8 +321,9 @@ Number  Start   End     Size    File system  Name     标志
 /dev/sdb  /dev/sdb1  /dev/sdb2
 [root@local-pyyu ~]#
 ```
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808032547-f75a9eed-5afb-420b-b69b-34c32c6c02e2.png#align=left&display=inline&height=2016&margin=%5Bobject%20Object%5D&originHeight=2016&originWidth=2274&size=0&status=done&style=none&width=2274)
+![img](Linux磁盘管理与文件系统.assets/1610808032547-f75a9eed-5afb-420b-b69b-34c32c6c02e2.png)
 用fdisk命令检查sdb磁盘情况
+
 ```
 [root@local-pyyu ~]# fdisk -l /dev/sdb
 WARNING: fdisk GPT support is currently new, and therefore in an experimental phase. Use at your own discretion.
@@ -420,7 +455,7 @@ Inode size:              256
 Block是存放实际文件数据的单元，例如图片，视频，文本等数据，单个的文件占用多个block来存储。
 操作系统标识文件并非以以文件名，而是以inode号码识别，文件名只是一个绰号而已。
 文件系统读取文件
-![](https://cdn.nlark.com/yuque/0/2021/jpeg/194754/1610808077905-3a9c0475-d5e5-44f1-8c05-cf1aa02e2713.jpeg#align=left&display=inline&height=1455&margin=%5Bobject%20Object%5D&originHeight=1624&originWidth=1974&size=0&status=done&style=none&width=1768)
+![img](Linux磁盘管理与文件系统.assets/1610808077905-3a9c0475-d5e5-44f1-8c05-cf1aa02e2713.jpeg)
 打个比方，比如一本书，存储设备或分区就相当于这本书，block 相当于书中的每一页内容，而inode 就相当于这本书前面的目录，一本书有很多内容，一个知识点可能有多页，如果想查找某部分或某知识点的内容，一般先查 书的目录，通过目录能更快的找到想要看的内容。
 
 书本 首页的目录索引就相当于Inode  每一页相当于一个block ， 整本书就是一块磁盘或分区
@@ -440,7 +475,7 @@ inode 为每个文件进行信息索引，所以就有了 inode的数值，（�
 - 修改文件内容，影响所有文件名
 - 删除一个文件名，不影响另一个文件名正常操作
 
-![](https://cdn.nlark.com/yuque/0/2021/jpeg/194754/1610808077908-35a26c0c-5ec0-4321-940b-5cc398627263.jpeg#align=left&display=inline&height=1460&margin=%5Bobject%20Object%5D&originHeight=1874&originWidth=2068&size=0&status=done&style=none&width=1611)
+![img](Linux磁盘管理与文件系统.assets/1610808077908-35a26c0c-5ec0-4321-940b-5cc398627263.jpeg)
 ```bash
 kanghuadeMacBook-Pro:~ kanghua$ echo "我是黑三老妖精" > alex.txt
 kanghuadeMacBook-Pro:~ kanghua$ ln alex.txt alex.txt2 #创建硬链接1
@@ -478,7 +513,7 @@ total 12
 461 lrwxrwxrwx. 1 root root 8 Oct 14 17:09 /opt/alex.txt.softlink -> /tmp/alex.txt
 ```
 **软硬链接原理图**
-![](https://cdn.nlark.com/yuque/0/2021/jpeg/194754/1610808077919-9528de02-b32f-4a7c-a725-b7847b45db90.jpeg#align=left&display=inline&height=874&margin=%5Bobject%20Object%5D&originHeight=994&originWidth=1252&size=0&status=done&style=none&width=1101)
+![img](Linux磁盘管理与文件系统.assets/1610808077919-9528de02-b32f-4a7c-a725-b7847b45db90.jpeg)
 **软硬链接总结**
 
 - 删除`软链接`对`源文件`，`硬链接`无影响
@@ -497,8 +532,9 @@ total 12
    - 因此任意一个目录，硬链接基数都是2（目录名+当前目录名）
 - 文件夹系统禁止创建硬链接
 
-![](https://cdn.nlark.com/yuque/0/2021/jpeg/194754/1610808077914-3bf2145c-3946-4ee8-ad40-000bcea2ba4e.jpeg#align=left&display=inline&height=1646&margin=%5Bobject%20Object%5D&originHeight=1646&originWidth=1342&size=0&status=done&style=none&width=1342)
+![img](Linux磁盘管理与文件系统.assets/1610808077914-3bf2145c-3946-4ee8-ad40-000bcea2ba4e.jpeg)
 ![](https://cdn.nlark.com/yuque/0/2021/jpeg/194754/1610808077901-5ecc1bd4-e93e-41ea-882a-09db0a5f64db.jpeg#align=left&display=inline&height=798&margin=%5Bobject%20Object%5D&originHeight=798&originWidth=1542&size=0&status=done&style=none&width=1542)
+
 ### 查看和管理Inode
 无论是硬盘、U盘等在linux中被格式化为ext系列的文件系统后，都分为两部分
 
@@ -511,10 +547,10 @@ total 12
 df -i   如果满了，删除大量小文件，存储了过多的元信息，小于1kb的文件
 df -h        如果满了，删除大容量的文件
 ```
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808077937-5199e60b-c639-429e-b2b8-8e8f648ff854.png#align=left&display=inline&height=898&margin=%5Bobject%20Object%5D&originHeight=898&originWidth=1834&size=0&status=done&style=none&width=1834)
+![img](Linux磁盘管理与文件系统.assets/1610808077937-5199e60b-c639-429e-b2b8-8e8f648ff854.png)
 
 # Linux文件系统管理
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808103606-bb7de04c-f73a-468f-aa25-2449508cc562.png#align=left&display=inline&height=1050&margin=%5Bobject%20Object%5D&originHeight=1050&originWidth=1506&size=0&status=done&style=none&width=1506)
+![img](Linux磁盘管理与文件系统.assets/1610808103606-bb7de04c-f73a-468f-aa25-2449508cc562.png)
 ## Linux支持的文件系统
 ### VFS
 我们知道文件系统的种类有很多。
@@ -531,9 +567,9 @@ $ cp /floppy/TEST /tmp/test
 如图VFS是用户的应用程序与文件系统实现之间的抽象层。
 cp程序并不需要知道/floppy/TEST 和 /tmp/test是什么文件系统类型。
 相反，cp程序直接与VFS交互，这是通过Unix程序设计人员都熟悉的普通系统调用来进行的。
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808103614-7b3acc80-37af-461e-82bd-44ca159a2f85.png#align=left&display=inline&height=536&margin=%5Bobject%20Object%5D&originHeight=536&originWidth=1100&size=0&status=done&style=none&width=1100)
+![img](Linux磁盘管理与文件系统.assets/1610808103606-bb7de04c-f73a-468f-aa25-2449508cc562-20221110134658206.png)
 下图显示了VFS的概况。
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808103606-9bdcbd75-03b6-40e3-ab2f-b60d5a15e1c6.png#align=left&display=inline&height=518&margin=%5Bobject%20Object%5D&originHeight=518&originWidth=1398&size=0&status=done&style=none&width=1398)
+![img](Linux磁盘管理与文件系统.assets/1610808103606-9bdcbd75-03b6-40e3-ab2f-b60d5a15e1c6.png)
 
 ---
 
@@ -578,23 +614,35 @@ journaling fs就是我们常说的： 日志型文件系统。
 比较典型的有： ext3, ext4, xfs等， 而ext2是不支持 日志的文件系统，该文件系统基本上已经不再使用；
 **简单介绍其实现原理**： 在磁盘上有一块区域专门用来保存日志，叫做journaling 区域，在更新磁盘上特定的block之前，首先把要做的变更 记录到 journaling 区域，然后才去更新相应的block。
 这样在系统崩溃的时候，可以通过journaling区域的信息，进行replay, 从而实现 恢复；
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808103612-69f4b444-2691-4e49-8327-d38ae8f5e70c.png#align=left&display=inline&height=876&margin=%5Bobject%20Object%5D&originHeight=876&originWidth=1710&size=0&status=done&style=none&width=1710)
+![img](Linux磁盘管理与文件系统.assets/1610808103612-69f4b444-2691-4e49-8327-d38ae8f5e70c.png)
 如果是非日志文件系统，进行读写操作，内核直接修改文件元数据，如果在写入过程异常崩溃，文件一致性就会出错，且修复过程很漫长，因此必须使用日志类型文件系统。
+
 ## 文件系统创建工具
 
 - 创建文件系统
 ```
 mkfs命令
 mkfs把分区格式化为某种文件系统
+
+-------------
+mkfs.ext2
+mkfs.ext3
+mkfs.ext4
+mkfs.vfat
+mkfs.xfs
 ```
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808103631-e6f848dd-4f80-4c5e-a203-3a752081226b.png#align=left&display=inline&height=294&margin=%5Bobject%20Object%5D&originHeight=294&originWidth=224&size=0&status=done&style=none&width=224)
+
 
 - 修复文件系统
 ```
 fsck
 检查并修复Linux文件系统
+-------
+fsck.ext2
+fsck.ext3
+fsck.ext4
 ```
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808103752-c5919646-7288-47f0-ab73-b117de658929.png#align=left&display=inline&height=236&margin=%5Bobject%20Object%5D&originHeight=236&originWidth=232&size=0&status=done&style=none&width=232)
+
 
 - 查看文件系统属性
 ```
@@ -734,15 +782,16 @@ ext3 ext4  用dumpe2fs显示信息
 ```
 
 # Linux文件系统挂载
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808125057-7078d32d-bc62-41ca-b1e2-bdc958e7d2ad.png#align=left&display=inline&height=1050&margin=%5Bobject%20Object%5D&originHeight=1050&originWidth=1506&size=0&status=done&style=none&width=1506)
+![img](Linux磁盘管理与文件系统.assets/1610808125057-7078d32d-bc62-41ca-b1e2-bdc958e7d2ad.png)
 ## 挂载
 Linux 下设备不挂载不能使用，不挂载的设备相当于没门没窗户的监狱(进不去出不来)，挂载相当于给设备创造了一个入口(挂载点，一般为目录)
 例如Linux访问U盘数据
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808125027-0affe9c9-d7e2-44ca-8f43-1ad7e8d8c478.png#align=left&display=inline&height=344&margin=%5Bobject%20Object%5D&originHeight=344&originWidth=984&size=0&status=done&style=none&width=984)
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808125040-90c2cf5c-7365-4ea8-9e35-995632b52d60.png#align=left&display=inline&height=334&margin=%5Bobject%20Object%5D&originHeight=334&originWidth=622&size=0&status=done&style=none&width=622)
+![image-20221110134918557](Linux磁盘管理与文件系统.assets/image-20221110134918557.png)
+
 **挂载**通常是将一个`存储设备`挂接到一个已经存在的`目录`上，访问这个`目录`就是访问该存储设备的内容。
 对于Linux系统来说，一切皆文件，所有文件都放在以`根目录`为起点的树形目录结构中，任何硬件设备也都是文件形式
 如图所示，是U盘存储设备和Linux系统自己的文件系统结构，此时Linux想要使用U盘的硬件设备，必须将Linux`本身的目录`和硬件设备的文件目录合二为一，此过程就称之为`挂载`。
+
 ```
 挂载操作会隐藏原本Linux目录中的文件，因此选择Linux本身的目录，最好是新建空目录用于挂载
 挂载之后，这个目录被称为挂载点
@@ -816,7 +865,8 @@ mount: 未知的文件系统类型“(null)”
 /dev/sdb5 on /mnt type xfs (rw,relatime,attr2,inode64,noquota)  #centos7默认的挂载选项
 ```
 **挂载使用分区，挂载过程图**
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808125044-02ff5276-277b-4505-8cad-c09b18279241.png#align=left&display=inline&height=582&margin=%5Bobject%20Object%5D&originHeight=582&originWidth=1730&size=0&status=done&style=none&width=1730)
+![img](Linux磁盘管理与文件系统.assets/1610808125044-02ff5276-277b-4505-8cad-c09b18279241.png)
+
 ### 只读挂载
 ```
 [root@local-pyyu ~]# mount -o ro /dev/sdb5 /mnt
@@ -867,7 +917,7 @@ umount: /mnt：目标忙。
 ```
 lsof /mnt
 ```
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808125042-841a3534-f81d-4d87-ad4e-016e15196add.png#align=left&display=inline&height=144&margin=%5Bobject%20Object%5D&originHeight=144&originWidth=2706&size=0&status=done&style=none&width=2706)
+![img](Linux磁盘管理与文件系统.assets/1610808125042-841a3534-f81d-4d87-ad4e-016e15196add.png)
 ```
 [root@local-pyyu ~]# fuser -v /mnt
                      用户     进程号 权限   命令
@@ -905,7 +955,7 @@ swap交换空间只是用来应急的，容量分配要适量
 第二步：格式化（swap命令不同，是mkswap）
 第三步：使用swap分区
 #### 分区
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808125052-590121e7-cbeb-4b50-aaa9-b18a6ab06a1f.png#align=left&display=inline&height=1776&margin=%5Bobject%20Object%5D&originHeight=1776&originWidth=1218&size=0&status=done&style=none&width=1218)
+![img](Linux磁盘管理与文件系统.assets/1610808125052-590121e7-cbeb-4b50-aaa9-b18a6ab06a1f.png)
 ### 格式化文件系统
 mkswap可将磁盘分区或文件设为Linux的交换区。
 ```
@@ -943,9 +993,9 @@ Swap:          2047           0        2047
 - Cached，缓存，Cached是给读取数据时加速的
 
 **cached是指把读取出来的数据保存在内存中，再次读取，不用读取硬盘而直接从内存中读取，加速数据读取过程。**
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808125066-d13a7aca-b932-4b64-94f9-5896c570e948.png#align=left&display=inline&height=872&margin=%5Bobject%20Object%5D&originHeight=872&originWidth=1226&size=0&status=done&style=none&width=1226)
+![img](Linux磁盘管理与文件系统.assets/1610808125066-d13a7aca-b932-4b64-94f9-5896c570e948.png)
 **buffers是指写入数据时，把分散的写入操作保存到内存，达到一定程度集中写入硬盘，减少磁盘碎片，以及反复的寻道时间，加速数据写入。**
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808125053-89551b55-1c8f-43b1-96ae-e21cb1d02db7.png#align=left&display=inline&height=540&margin=%5Bobject%20Object%5D&originHeight=540&originWidth=846&size=0&status=done&style=none&width=846)
+
 ```
 可以理解为果园运输草莓
 1.摘草莓的小姑娘，使用编织篮采摘
@@ -1003,7 +1053,8 @@ Swap:          2547           0        2547
 ```
 ## 开机自动挂载
 /etc/fstab是用来存放文件系统的静态信息的文件，当系统启动的时候，系统会自动地从这个文件读取信息，并且会自动将此文件中指定的文件系统挂载到指定的目录。
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808125067-2ac4d4ab-3971-4f7b-9ec0-fd63b25848bc.png#align=left&display=inline&height=426&margin=%5Bobject%20Object%5D&originHeight=426&originWidth=2198&size=0&status=done&style=none&width=2198)
+![img](Linux磁盘管理与文件系统.assets/1610808125067-2ac4d4ab-3971-4f7b-9ec0-fd63b25848bc.png)
+
 ```
 # <fie sysytem><mount point><type><options><dump><pass>
 ```
@@ -1169,7 +1220,7 @@ Raid磁盘阵列组能够提升数据冗余性，当然也增加了硬盘的价�
 
 ---
 
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808148892-b93ffcba-96ba-4aaf-8796-0dcf2d8cbd4b.png#align=left&display=inline&height=892&margin=%5Bobject%20Object%5D&originHeight=892&originWidth=1210&size=0&status=done&style=none&width=1210)
+![img](Linux磁盘管理与文件系统.assets/1610808148892-b93ffcba-96ba-4aaf-8796-0dcf2d8cbd4b.png)
 先不谈磁盘，饮水机各位应该都了解
 
 - _standalone_
@@ -1193,7 +1244,7 @@ Raid磁盘阵列组能够提升数据冗余性，当然也增加了硬盘的价�
 由于技术角度因素、成本控制因素等，不同的企业在数据的可靠性以及性能上做了权衡，制定出不同的Raid方案
 ### Raid 0
 将`两个或两个`以上`相同型号`、`容量`的硬盘`组合`，磁盘阵列的总容量便是多个硬盘的总和。
-![0.gif](https://cdn.nlark.com/yuque/0/2021/gif/194754/1610808306650-0e5052a0-1eea-4573-8716-d556420d362b.gif)
+![0.gif](Linux磁盘管理与文件系统.assets/1610808306650-0e5052a0-1eea-4573-8716-d556420d362b.gif)
 数据`依次`写入物理硬盘，理想状态下，硬盘读写性能会翻倍
 但是raid 0 任意一块硬盘故障都会导致整个系统数据被破坏，数据分别写入两个硬盘设备，没有数据备份的功能。
 **Raid 0 适用于对于数据安全性不太关注，追求性能的场景。**
@@ -1203,14 +1254,15 @@ _raid 0 把数据打散，好比多了条队同时排，效率一下子就提升
 
 ### raid 1
 由于raid 0的特性，数据依次写入到各个物理硬盘中，数据是分开放的，因此损坏任意一个硬盘，都会对完整的数据破坏，对于企业数据来说，肯定是不允许。
-![](https://cdn.nlark.com/yuque/0/2021/gif/194754/1610808148906-c09153ad-73c9-4112-8502-26ff069e5a40.gif#align=left&display=inline&height=454&margin=%5Bobject%20Object%5D&originHeight=454&originWidth=498&size=0&status=done&style=none&width=498)
+![](Linux磁盘管理与文件系统.assets/1610808148906-c09153ad-73c9-4112-8502-26ff069e5a40.gif)
 Raid 1技术，是将`两块以上`硬盘绑定，数据写入时，同时写入多个硬盘，因此即使有硬盘故障，也有数据备份。
 但是这种方式，无疑极大降低磁盘利用率，假设两块硬盘一共4T，真实数据只有2TB，利用率50%，如果是三块硬盘组成raid 1，利用率只有33%，也是不可取的。
 那有没有一种方案，能够控制成本、保证数据安全性、以及读写速度呢？
+
 ### raid 3
 **计算机的异或：数字相同则为0，数字不同则为1**
 计算机的数据只有0和1对于异或处理，如下
-![image-20191205105139047.png](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808351053-910cde55-6b87-4c13-b2ae-624816cab9d9.png?x-oss-process=image%2Fresize%2Cw_831%2Climit_0)
+![image-20221110135232596](Linux磁盘管理与文件系统.assets/image-20221110135232596.png)
 
 ```
 [root@gegelinux testdu]# python
@@ -1242,24 +1294,27 @@ A异或B异或C异或D
 0
 ```
 异或的作用是，只要知道异或的结果，任何一个值都能够反推出来
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808148931-0b94435b-3b23-4de4-801f-e62f004e3cbb.png#align=left&display=inline&height=1070&margin=%5Bobject%20Object%5D&originHeight=1070&originWidth=1274&size=0&status=done&style=none&width=1274)
+![image-20221110135323553](Linux磁盘管理与文件系统.assets/image-20221110135323553.png)
 因此raid 3 至少需要3块硬盘，只要校验盘没坏，坏了一块数据盘可以反推数据来恢复。
 但是你会发现同样也浪费了一块磁盘，但是要比raid 1 节约不少。
-如果校验盘坏了呢？（你咋这么多事呢。。）
+如果校验盘坏了呢？（你咋这么多事呢。。)
+
 ### raid 5
-![](https://cdn.nlark.com/yuque/0/2021/gif/194754/1610808148941-b3502c05-8c59-411d-8411-a3ab2fd6d6d3.gif#align=left&display=inline&height=401&margin=%5Bobject%20Object%5D&originHeight=401&originWidth=639&size=0&status=done&style=none&width=639)
+![](Linux磁盘管理与文件系统.assets/1610808148941-b3502c05-8c59-411d-8411-a3ab2fd6d6d3.gif)
 Raid 5规则下，校验码会均匀放在每一块硬盘，磁盘1存放磁盘2、3、4的校验码
-![](https://cdn.nlark.com/yuque/0/2021/gif/194754/1610808148928-09710e27-239e-4c07-9fcb-26f97f293d7b.gif#align=left&display=inline&height=378&margin=%5Bobject%20Object%5D&originHeight=378&originWidth=640&size=0&status=done&style=none&width=640)
+![](Linux磁盘管理与文件系统.assets/1610808148928-09710e27-239e-4c07-9fcb-26f97f293d7b.gif)
 这样任意一块挂了都能够恢复，提升了容错率，但是也仅仅是只能挂掉一块
+
 ### Raid 10
 Raid 5技术是在读写速度和数据安全性上做了一定的妥协，对于企业来说，最核心的就是数据，成本不是问题。
-![](https://cdn.nlark.com/yuque/0/2021/gif/194754/1610808148941-edea28bc-fca5-4cc0-b233-eca6fc64847b.gif#align=left&display=inline&height=454&margin=%5Bobject%20Object%5D&originHeight=454&originWidth=626&size=0&status=done&style=none&width=626)
+![](Linux磁盘管理与文件系统.assets/1610808148941-edea28bc-fca5-4cc0-b233-eca6fc64847b.gif)
 Raid 10 其实是raid 0 加上raid 1，吸收了raid 0的效率，raid 1的安全性，因此至少需要四块硬盘搭建raid 10。
 1.通过raid 1两两镜像复制，保障数据安全性
 2.针对两个raid 1部署raid 0，进一步提升磁盘读写速度
 3.只要坏的不是同一组中所有硬盘，那么就算坏掉一半硬盘都不会丢失数据
+
 ### 硬RAID、软RAID
-![](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808148941-451c9441-4bea-4d30-8f04-9c8724193f3f.png#align=left&display=inline&height=1488&margin=%5Bobject%20Object%5D&originHeight=1488&originWidth=1898&size=0&status=done&style=none&width=1898)
+![image-20221110135433396](Linux磁盘管理与文件系统.assets/image-20221110135433396.png)
 由CPU去控制硬盘驱动器进行数据转换、计算的过程就是软件RAID
 由专门的RAID卡上的主控芯片操控，就是硬件RAID
 软件RAID和硬件RAID的差异如下
@@ -1692,7 +1747,7 @@ LVM(Logical Volume Manager)逻辑卷管理，是一种将一个或多个硬盘�
 
 - 多块硬盘做成逻辑卷，将整个逻辑卷同意管理，可以动态对分区进行扩缩空间容量
 ## 图解lvm
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808545282-a31bf99f-af63-4b6d-963a-4db98e3dc26d.png?x-oss-process=image%2Fresize%2Cw_831%2Climit_0)
+![image.png](Linux磁盘管理与文件系统.assets/1610808545282-a31bf99f-af63-4b6d-963a-4db98e3dc26d.png)
 ## lvm名词
 
 - PP（Physical Parttion）：物理分区，LVM建立在物理分区之上
@@ -1702,7 +1757,7 @@ LVM(Logical Volume Manager)逻辑卷管理，是一种将一个或多个硬盘�
 - LE（Logical Extends）：逻辑扩展单元，组成LV的基本单元，一个LE对应一个PE
 - LV（Logical Volume）：逻辑卷，建立在VG之上，是一个可以动态改变大小的分区
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808516242-edcab5d9-2122-4d2c-bc6c-9d9f41c6c2fe.png)
+![image-20221110135520351](Linux磁盘管理与文件系统.assets/image-20221110135520351.png)
 ### LVM原理
 LVM是通过`交换PE`的方式，达到弹性变更文件系统大小的
 
@@ -1724,7 +1779,7 @@ LVM是通过`交换PE`的方式，达到弹性变更文件系统大小的
 4. LV阶段：通过`lvcreate`将卷组分成若干个逻辑卷LV
 5. 开始使用：通过`mkfs`对LV格式化，最后挂载LV使用
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/194754/1610808487478-7bf61dc8-26a7-4694-8656-f33e5b4f9b6e.png?x-oss-process=image%2Fresize%2Cw_831%2Climit_0)
+![image-20221110135530971](Linux磁盘管理与文件系统.assets/image-20221110135530971.png)
 ### 物理卷管理命令
 | 命令 | 功能 |
 | :---: | :---: |
