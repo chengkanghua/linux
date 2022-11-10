@@ -230,6 +230,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 0.0.0.0         192.168.178.2   0.0.0.0         UG    102    0        0 ens33
 192.168.178.0   0.0.0.0         255.255.255.0   U     102    0        0 ens33
 ```
+
 解释
 
 - Destination：表示网络号，network的意思
@@ -246,7 +247,9 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 - Metric：需要经过几个网络节点才能到达路由的目标地址
 - Ref：参考到此路由规则的数目
 - Iface：路由对应的网络设备接口
-```bash
+
+
+```
 192.168.178.0   0.0.0.0         255.255.255.0   U     102    0        0 ens33
 表示主机所在网段是192.168.178.0
 若数据传送目标在同一网段，可以直接通过ens33转发数据包
@@ -256,6 +259,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 ### 添加和删除默认网关
 默认网关就是数据包不匹配任何设定的路由规则最后流经的地址关口。
 网关网关，网络的关口，就好比家里的门，外出就得经过访问，数据也是一样。
+
 ```
 #此时我的机器，路由信息
 [root@local-gege network-scripts]# route
@@ -264,6 +268,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 default         bogon           0.0.0.0         UG    102    0        0 ens33
 192.168.178.0   0.0.0.0         255.255.255.0   U     102    0        0 ens33
 ```
+
 ### 删除网关
 
 ```
@@ -284,6 +289,7 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 以上方式等同于
 route add -net 0.0.0.0 gw 192.168.178.2
 ```
+
 ## arp命令
 arp是地址解析协议（ARP、Address Resolution Protocol），主要功能是根据IP地址获取物理地址（MAC地址）
 ```
