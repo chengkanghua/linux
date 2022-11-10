@@ -609,6 +609,7 @@ udp6       0      0 ::1:323                 :::*                                
 - -p：显示进程号与进程名
 ### 显示当前系统的路由表
 效果等同于route -n
+
 ```
 [root@local-gege ~]# netstat -rn
 Kernel IP routing table
